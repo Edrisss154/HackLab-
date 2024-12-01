@@ -262,10 +262,12 @@ Use payloads like:
 ```
 
 ### 2. **Directory Traversal**  
-Access restricted files using:  
-```
-../../secret.txt
-```
+**2. Bypassing Access Restrictions**  
+You can access restricted files by modifying the `Referer` header in your HTTP request. This involves simulating a request as if it originates from an authorized page. Tools like browser developer tools, cURL, or applications like Burp Suite can be used to make such changes effectively.  
+
+For example, altering the `Referer` value to the URL of a trusted or authorized page may trick the server into providing access to otherwise restricted resources.  
+
+This is a practical learning scenario to understand how servers verify `Referer` headers and why relying solely on them for access control is insecure.
 
 ---
 
