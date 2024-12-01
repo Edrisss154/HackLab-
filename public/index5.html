@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Theme - Mr. Robot</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* استایل پس‌زمینه */
+        body {
+            font-family: 'Courier New', monospace;
+            color: #33FF33;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxT31QBLzETaWnmxBPt-5UNdRuY4pk1Yi7Zw&s'); /* لینک تصویر Mr. Robot */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* حالت متن و عناصر */
+        .text-green {
+            color: #33FF33;
+        }
+
+        .bg-dark-overlay {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: #33FF33;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .terminal {
+            background-color: #000;
+            color: #33FF33;
+            font-size: 1.1em;
+            line-height: 1.6;
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #33FF33;
+            padding: 10px;
+        }
+
+        .btn-outline-green {
+            color: #33FF33;
+            border-color: #33FF33;
+        }
+
+        .btn-outline-green:hover {
+            background-color: #33FF33;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container text-center mt-5">
+        <div class="bg-dark-overlay">
+            <h1 class="display-4"></h1>
+            <p class="lead">
+                Can you send a request to me?
+                :)</p>
+            <div class="container">
+               
+                <form action="/sama" method="post">
+                
+                <input type="text" placeholder="This input is disabled" disabled>
+                <input type="submit" value="Send" >
+            </form>
+            </div>
+            
+
+        </div>
+    </div>
+    
+</body>
+</html>

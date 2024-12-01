@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Lab</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            background-color: black;
+            color: green;
+            border: 1px solid green;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SQL Injection Lab</h1>
+    <form action="/danger" method="POST">
+        <label for="username">Enter Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter username">
+        <button type="submit">Search</button>
+    </form>
+    <p>Hint: Try <code>' OR '1'='1</code> as input to exploit SQL Injection.</p>
+</body>
+</html>
