@@ -14,7 +14,6 @@ const db = mysql.createConnection({
 });
 
 
-// اتصال به دیتابیس
 db.connect((err) => {
     if (err) {
         console.error('خطا در اتصال به دیتابیس:', err.message);
@@ -34,7 +33,6 @@ db.connect((err) => {
             else {
                 console.log('جدول کاربران ایجاد شد یا قبلاً وجود داشته است.');
 
-                // بررسی و وارد کردن داده‌ها فقط در صورت خالی بودن جدول
                 db.query('SELECT COUNT(*) AS count FROM users', (err, result) => {
                     if (err) {
                         console.error('خطا در بررسی جدول:', err.message);
@@ -57,29 +55,23 @@ db.connect((err) => {
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(express.static(path.join(__dirname, 'views')));
 
 
-// Middleware برای مسدود کردن دسترسی به همه‌ی فایل‌های استاتیک به‌جز مسیر خاص
 app.use('/js/script.js', (req, res, next) => {
-    // بررسی اینکه کاربر از مسیر `/special-access` وارد شده باشد
     if (req.headers.referer && req.headers.referer.includes('/level2')) {
-        next(); // اجازه دسترسی به فایل JavaScript
+        next(); 
     } else {
-        res.status(403).send("Access Denied"); // مسدود کردن دسترسی
+        res.status(403).send("Access Denied");
     }
 });
 app.use('/css/style.css', (req, res, next) => {
-    // بررسی اینکه کاربر از مسیر `/special-access` وارد شده باشد
     if (req.headers.referer && req.headers.referer.includes('/')) {
-        next(); // اجازه دسترسی به فایل JavaScript
+        next(); 
     } else {
-        res.status(403).send("Access Denied"); // مسدود کردن دسترسی
+        res.status(403).send("Access Denied"); 
     }
 });
-// ارائه فایل‌های استاتیک
 app.use(express.static('public'));
-// Middleware برای مسدود کردن دسترسی به فایل‌های استاتیک
 
 
 app.get('/', (req, res) => {
@@ -87,7 +79,7 @@ app.get('/', (req, res) => {
     app.use('/js/level2.js', (req, res, next) => {
       
        
-            res.status(403).send("Access Denied"); // مسدود کردن دسترسی
+            res.status(403).send("Access Denied"); 
         
     });
 });
@@ -97,22 +89,20 @@ app.get('/level1', (req, res) => {
 app.get('/level2', (req, res) => {
     res.sendFile(__dirname + '/public/index3.html');
     app.use('/js/script.js', (req, res, next) => {
-        // بررسی اینکه کاربر از مسیر `/special-access` وارد شده باشد
         if (req.headers.referer && req.headers.referer.includes('/level2')) {
-            next(); // اجازه دسترسی به فایل JavaScript
+            next(); 
         } else {
-            res.status(403).send("Access Denied"); // مسدود کردن دسترسی
+            res.status(403).send("Access Denied");
         }
     });
 });
 app.get('/kbkwsihnuy', (req, res) => {
     res.sendFile(__dirname + '/public/index4.html');
     app.use('/js', (req, res, next) => {
-        // بررسی اینکه کاربر از مسیر `/special-access` وارد شده باشد
         if (req.headers.referer && req.headers.referer.includes('/kbkwsihnuy')) {
-            next(); // اجازه دسترسی به فایل JavaScript
+            next();
         } else {
-            res.status(403).send("Access Denied"); // مسدود کردن دسترسی
+            res.status(403).send("Access Denied"); 
         }
     });
 });
@@ -138,18 +128,17 @@ app.post('/barare', (req, res) => {
 app.get('/mikdu', (req, res) => {
     res.sendFile(__dirname + '/public/index8.html');
     app.use('/js/scripts.js', (req, res, next) => {
-        // بررسی اینکه کاربر از مسیر `/special-access` وارد شده باشد
         if (req.headers.referer && req.headers.referer.includes('/mikdu')) {
-            next(); // اجازه دسترسی به فایل JavaScript
+            next();
         } else {
-            res.status(403).send("Access Denied"); // مسدود کردن دسترسی
+            res.status(403).send("Access Denied"); 
         }
     });
    
 });
 app.put('/mikdu', (req, res) => {
    
-    const responseData = { message: "NextLevel:/kjmoije" }; // ارسال پاسخ JSON res.json(responseData); });
+    const responseData = { message: "NextLevel:/kjmoije" };
     res.json(responseData)
     console.log("mamad")
    
@@ -159,8 +148,8 @@ app.get('/kjmoije', (req, res) => {
     res.sendFile(__dirname + '/public/index9.html');
     res.cookie('NextLevel', 'level8sd', {
         maxAge: 24 * 60 * 60 * 1000, // اعتبار کوکی برای یک روز
-        httpOnly: true,              // فقط از طریق HTTP قابل دسترسی است (نه جاوااسکریپت)
-        secure: false                // برای سرورهای HTTPS باید true باشد
+        httpOnly: true,              
+        secure: false                
     });
 
    
@@ -173,7 +162,6 @@ app.get('/level8sd', (req, res) => {
 
 app.post('/level8sd',(req, res)=>{
     const username = req.body.username;
-    // کوئری آسیب‌پذیر به SQL Injection
     const query = `SELECT * FROM users WHERE username = '${username}'`;
     console.log("Executed Query:", query);
 
@@ -194,19 +182,16 @@ app.post('/level8sd',(req, res)=>{
 app.get('/danger', (req, res) => {
     res.sendFile(__dirname + '/public/index11.html');
 });
-// مسیر جستجو برای فلگ
 app.post('/danger', (req, res) => {
     const username = req.body.username;
-    const key = req.body.key || ''; // کلید برای دسترسی به فلگ
+    const key = req.body.key || ''; 
 
-    // کوئری جستجوی کاربران
     let query = `
         SELECT id, name 
         FROM users1 
         WHERE name LIKE '%${username}%' AND LENGTH(name) > 3
     `;
 
-    // اگر کلید خاص ارسال شده باشد، فلگ را نیز جستجو کن
     if (key === 'my_secret_key') {
         query = `
             SELECT id, name, URL 
