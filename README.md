@@ -45,7 +45,7 @@
 
 ### 2. نصب پکیج‌های مورد نیاز:
 ```bash
-git clone https://github.com/YourUsername/HackLab.git
+git clone https://github.com/Edrisss154/HackLab-.git
 cd HackLab
 ```
 ```bash
