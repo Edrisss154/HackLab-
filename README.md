@@ -88,7 +88,7 @@ mysql -u root -p hacklab < your_file.sql
 
 ### 4. اجرای سرور:
 ```bash
-node app.js
+node index.js
 ```
 
 سرور روی `http://localhost:50001` اجرا خواهد شد.
